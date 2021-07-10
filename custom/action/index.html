@@ -401,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting_started/quick_start/" class="md-nav__link">
+      <a href="../../getting_started/quickstart/" class="md-nav__link">
         Quick Start
       </a>
     </li>
@@ -704,18 +704,6 @@
             
   
   
-  
-    <li class="md-nav__item">
-      <a href="../provider/" class="md-nav__link">
-        Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
     
   
   
@@ -727,9 +715,46 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Extra Actions
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Extra Actions
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#action" class="md-nav__link">
+    Action
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toolbaraction" class="md-nav__link">
+    ToolbarAction
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -850,6 +875,28 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#action" class="md-nav__link">
+    Action
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#toolbaraction" class="md-nav__link">
+    ToolbarAction
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -866,6 +913,28 @@
                 
                 
                 <h1 id="extra-actions">Extra Actions</h1>
+<p>There are three kinds of action, <code>toolbar action</code> show in right top of table header, <code>action</code> show in end of table
+row, <code>bulk action</code> show in left top of table header.</p>
+<p><img alt="" src="https://raw.githubusercontent.com/fastapi-admin/fastapi-admin/dev/images/actions.png" /></p>
+<p>The format request link of <code>Action</code> is <code>/{resource}/action/{action_name}/{pk}</code>, <code>BulkAction</code>
+is <code>/{resource}/bulk_action/{action_name}</code>,<code>ToolbarAction</code> is <code>/{resource}/toolbar_action/{action_name}</code>.</p>
+<h2 id="action">Action</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">Action</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">icon</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+    <span class="n">method</span><span class="p">:</span> <span class="n">enums</span><span class="o">.</span><span class="n">Method</span> <span class="o">=</span> <span class="n">enums</span><span class="o">.</span><span class="n">Method</span><span class="o">.</span><span class="n">POST</span>
+    <span class="n">ajax</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
+
+    <span class="nd">@validator</span><span class="p">(</span><span class="s2">&quot;ajax&quot;</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">ajax_validate</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">v</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">v</span> <span class="ow">and</span> <span class="n">values</span><span class="p">[</span><span class="s2">&quot;method&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="n">enums</span><span class="o">.</span><span class="n">Method</span><span class="o">.</span><span class="n">GET</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;ajax is False only available when method is Method.GET&quot;</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="toolbaraction">ToolbarAction</h2>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ToolbarAction</span><span class="p">(</span><span class="n">Action</span><span class="p">):</span>
+    <span class="n">class_</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span>
+</code></pre></div>
                 
                   
                     
@@ -874,7 +943,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 8, 2021 11:59:19</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 10, 2021 04:31:01</span>
       
     
   </small>
@@ -903,7 +972,7 @@
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../provider/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Provider" rel="prev">
+        <a href="../file_upload/" class="md-footer__link md-footer__link--prev" aria-label="Previous: File Upload" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -912,7 +981,7 @@
               <span class="md-footer__direction">
                 Previous
               </span>
-              Provider
+              File Upload
             </div>
           </div>
         </a>

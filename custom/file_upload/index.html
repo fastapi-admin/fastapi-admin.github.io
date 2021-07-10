@@ -401,7 +401,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../getting_started/quick_start/" class="md-nav__link">
+      <a href="../../getting_started/quickstart/" class="md-nav__link">
         Quick Start
       </a>
     </li>
@@ -716,18 +716,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../provider/" class="md-nav__link">
-        Provider
-      </a>
-    </li>
-  
-
-          
-            
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../action/" class="md-nav__link">
         Extra Actions
       </a>
@@ -866,6 +854,47 @@
                 
                 
                 <h1 id="file-upload">File Upload</h1>
+<p>There is a builtin normal file upload,  <code>S3</code> and <code>ALiYunOSS</code> for pro version. If you want to use custom file upload
+backend, just inherit <code>FileUpload</code> and override <code>upload</code> method, which pass <code>UploadFile</code> object and return the accessed
+link.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">FileUpload</span><span class="p">:</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">uploads_dir</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+            <span class="n">allow_extensions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">max_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1024</span> <span class="o">**</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="n">filename_generator</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="n">prefix</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;/static/uploads&quot;</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_size</span> <span class="o">=</span> <span class="n">max_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">allow_extensions</span> <span class="o">=</span> <span class="n">allow_extensions</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">uploads_dir</span> <span class="o">=</span> <span class="n">uploads_dir</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">filename_generator</span> <span class="o">=</span> <span class="n">filename_generator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">prefix</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">save_file</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">bytes</span><span class="p">):</span>
+        <span class="n">file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">uploads_dir</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+        <span class="k">async</span> <span class="k">with</span> <span class="n">aiofiles</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">upload</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">file</span><span class="p">:</span> <span class="n">UploadFile</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename_generator</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filename_generator</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">filename</span> <span class="o">=</span> <span class="n">file</span><span class="o">.</span><span class="n">filename</span>
+        <span class="n">content</span> <span class="o">=</span> <span class="k">await</span> <span class="n">file</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+        <span class="n">file_size</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">file_size</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_size</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">FileMaxSizeLimit</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;File size </span><span class="si">{</span><span class="n">file_size</span><span class="si">}</span><span class="s2"> exceeds max size </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">max_size</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">allow_extensions</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">ext</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">allow_extensions</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">filename</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="n">ext</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="n">FileExtNotAllowed</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;File ext </span><span class="si">{</span><span class="n">ext</span><span class="si">}</span><span class="s2"> is not allowed of </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">allow_extensions</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">save_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">content</span><span class="p">)</span>
+</code></pre></div>
                 
                   
                     
@@ -874,7 +903,7 @@
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 8, 2021 11:59:19</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 10, 2021 04:31:01</span>
       
     
   </small>
@@ -919,13 +948,13 @@
       
       
         
-        <a href="../provider/" class="md-footer__link md-footer__link--next" aria-label="Next: Provider" rel="next">
+        <a href="../action/" class="md-footer__link md-footer__link--next" aria-label="Next: Extra Actions" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              Provider
+              Extra Actions
             </div>
           </div>
           <div class="md-footer__button md-icon">
