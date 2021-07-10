@@ -38,7 +38,7 @@ nav:
   - Home: index.md
   - Getting Started:
       - getting_started/installation.md
-      - getting_started/quick_start.md
+      - getting_started/quickstart.md
   - Reference:
       - reference/index.md
       - reference/resource.md
@@ -59,7 +59,6 @@ nav:
       - custom/overwrite.md
       - custom/widget.md
       - custom/file_upload.md
-      - custom/provider.md
       - custom/action.md
   - Pro Version For Sponsor:
       - pro/sponsor.md

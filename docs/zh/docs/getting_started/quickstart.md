@@ -1,10 +1,10 @@
 # 入门指南
 
-`FastAPI-Admin` is easy to mount your `FastAPI` app, just need a few configs.
+`FastAPI-Admin` 很容易能集成到已有的`FastAPI`应用，只需要很少的配置。
 
-## Mount Admin App
+## 挂载
 
-First, you need mount the admin app from `FastAPI-Admin` as a sub application of `FastAPI`.
+首先，你需要挂载admin app到已存在的`FastAPI`应用。
 
 ```python
 from fastapi_admin.app import app as admin_app
@@ -12,12 +12,11 @@ from fastapi import FastAPI
 
 app = FastAPI()
 app.mount("/admin", admin_app)
-
 ```
 
-## Configure Admin App
+## 配置
 
-There are some configs to configure the admin app, and you need to configure it on startup of `FastAPI`.
+需要在`FastAPI`的`startup`事件中进行初始化配置。
 
 ```python
 from fastapi_admin.app import app as admin_app
@@ -43,9 +42,9 @@ async def startup():
     )
 ```
 
-The full list of configs and detail can be found in [Configuration](/reference/configuration).
+所有的配置项可以在 [配置](/reference/configuration)找到。
 
-## Define And Register Resource
+## 定义并注册资源
 
 There are three kinds of resources, which are `Link`,`Model`, and `Dropdown`.
 

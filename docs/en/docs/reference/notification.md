@@ -34,7 +34,7 @@ data = {
     "title": "test",
     "content": "//avatars.githubusercontent.com/u/13377178?v=4",
     "image": "https://avatars.githubusercontent.com/u/13377178?v=4",
-    "link": "https://fastapi-admin-docs.long2ice.cn"
+    "link": "https://fastapi-admin.github.io"
 }
 await provider.broadcast(data)
 ```

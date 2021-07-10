@@ -1,16 +1,12 @@
 # 安装
 
-## 从 pypi
-
-You can install from pypi.
+## 从 pypi安装
 
 ```shell
 > pip install fastapi-admin
 ```
 
-## 从源码
-
-Or you can install from source with latest code.
+## 从源码安装
 
 ```shell
 > pip install git+https://github.com/fastapi-admin/fastapi-admin.git
@@ -18,7 +14,7 @@ Or you can install from source with latest code.
 
 ### 使用 requirements.txt
 
-Add the following line.
+添加以下行。
 
 ```
 -e https://github.com/fastapi-admin/fastapi-admin.git@develop#egg=fastapi-admin
@@ -26,7 +22,7 @@ Add the following line.
 
 ### 使用 poetry
 
-Add the following line in section `[tool.poetry.dependencies]`.
+添加以下内容到 `[tool.poetry.dependencies]`。
 
 ```toml
 fastapi-admin = { git = 'https://github.com/fastapi-admin/fastapi-admin.git', branch = 'develop' }

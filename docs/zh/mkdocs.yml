@@ -40,24 +40,32 @@ nav:
       - getting_started/installation.md
       - getting_started/quickstart.md
   - 参考:
-      - reference/configuration.md
+      - reference/index.md
       - reference/resource.md
       - 组件:
           - reference/widget/filter.md
           - reference/widget/display.md
           - reference/widget/input.md
+      - reference/login.md
       - reference/file_upload.md
       - reference/middleware.md
+      - reference/permission.md
+      - reference/admin_log.md
+      - reference/global_search.md
+      - reference/errors.md
+      - reference/notification.md
   - 自定义:
       - custom/page.md
       - custom/overwrite.md
-      - custom/login.md
-      - custom/file.md
       - custom/widget.md
+      - custom/file_upload.md
+      - custom/action.md
   - 赞助者 Pro 版本:
-      - pro/index.md
       - pro/sponsor.md
+      - pro/exclusive.md
       - pro/installation.md
+      - pro/upgrade.md
+      - pro/support.md
 extra:
   alternate:
     - name: English
