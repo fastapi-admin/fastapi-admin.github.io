@@ -50,7 +50,7 @@ There are three kinds of resources, which are `Link`,`Model`, and `Dropdown`.
 
 ### Link
 
-The `Link` will display a menu in sidebar with custom page or third page.
+`Link` 可以展示自定义界面或者跳转到第三方界面。
 
 ```python
 from fastapi_admin.app import app
@@ -66,11 +66,11 @@ class Home(Link):
 
 ### Field
 
-The `Field` is used in `Model` resource to define how to display and input every field in model page.
+`Field`在`Model`资源中使用，定义每一个字段如何展示和输入。
 
 ### Model
 
-The `Model` make a TortoiseORM model as a menu with CURD page.
+使用`Model`将一个`TortoiseORM`的`model`映射为一个资源菜单，可以进行增删改查。
 
 ```python
 
@@ -117,7 +117,7 @@ class UserResource(Model):
 
 ### Dropdown
 
-The `Dropdown` can contains both `Link` and `Model`, which can be nested.
+`Dropdown` 展示为一个下拉菜单，可以嵌套包含`Link`和`Model`。
 
 ```python
 
@@ -160,6 +160,6 @@ class Content(Dropdown):
     resources = [ProductResource, CategoryResource]
 ```
 
-### What's next?
+### 下一步？
 
-That's all, you can run your app now. For more reference you can see [Reference](/reference).
+基本配置已完毕，现在你可以启动你的App。更多可参考[Reference](/zh/reference)。
