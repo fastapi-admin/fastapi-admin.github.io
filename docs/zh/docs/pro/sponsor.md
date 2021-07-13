@@ -1,32 +1,27 @@
-# 捐赠
+# 赞助
 
-The pro version is just for the sponsors. As a sponsor, you will be invited
-to [fastapi-admin](https://github.com/fastapi-admin) organization as an **outside collaborator with readonly access**,
-and you can get the pro features and get updates for a time.
+Pro版本专为赞助者打造，作为赞助商，你会以外部合作者被邀请到[fastapi-admin](https://github.com/fastapi-admin)组织中，包含只读权限，然后你可以获得Pro版本独家功能以及对应时间段内的更新支持。
 
-## 如何捐赠
+## 如何赞助
 
-Sponsor Link: **<https://sponsor.long2ice.cn>**
-
-You can choose any sponsor way you like. After sponsor, you can email me <long2ice@gmail.com> with your GitHub account
-and sponsor way and account, then I will invite you to join [fastapi-admin](https://github.com/fastapi-admin)
-organization.
+赞助地址： **<https://sponsor.long2ice.cn>**
+你可以选择你任何你喜欢的方式进行赞助，完成赞助后，你可以发送邮件到<long2ice@gmail.com>
+，包含你的赞助方式、赞助金额以及GitHub账号，然后我会邀请你到[fastapi-admin](https://github.com/fastapi-admin)组织中。
 
 ## 等级
 
 ### $18 - 月
 
-You will be invited and keep collaborator role for a month.
+你会被邀请为外部合作者一个月。
 
 ### $58 - 半年
 
-You will be invited and keep collaborator role for half a year.
+你会被邀请为外部合作者半年。
 
 ### $98 - 年
 
-You will be invited and keep collaborator role for a year.
+你会被邀请为外部合作者一年。
 
 ## 许可
 
-After you have be invited, you can read and clone and develop yourself, but please **don't distribute the source code**
-of pro version. Thanks!
+当你被邀请后，你可以克隆源码然后自己进行开发，但是请不要发布Pro版本源码，谢谢！

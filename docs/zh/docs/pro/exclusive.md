@@ -2,7 +2,7 @@
 
 ## 登录验证码
 
-You can set captcha in admin login page, just set `enable_captcha=True`.
+你可以在管理员登录界面设置验证码，只需要设置`enable_captcha=True`。
 
 ```python3
 login_provider = UsernamePasswordProvider(user_model=User, enable_captcha=True)
@@ -10,9 +10,9 @@ login_provider = UsernamePasswordProvider(user_model=User, enable_captcha=True)
 
 ## Google Recaptcha V2
 
-In addition to captcha, you can also use `Google Recaptcha V2` to protect your site.
+除了图片验证码，你还可以设置`Google Recaptcha V2`来保护你的登录界面。
 
-The `GoogleRecaptcha` schema:
+`GoogleRecaptcha` 类：
 
 ```python
 class GoogleRecaptcha(BaseModel):
@@ -22,7 +22,7 @@ class GoogleRecaptcha(BaseModel):
     secret: str
 ```
 
-Just set `google_recaptcha` in login provider.
+然后在`LoginProvider`设置`google_recaptcha`参数。
 
 ```python
 from fastapi_admin.providers.login import GoogleRecaptcha
@@ -41,7 +41,7 @@ await admin_app.configure(
 
 ## 登录失败IP限制
 
-If you want limit login failed ip with error password, you can use `LoginPasswordMaxTryMiddleware`.
+如果你需要在管理员多次登录失败后限制其IP以防止密码爆破，你可以使用`LoginPasswordMaxTryMiddleware`。
 
 ```python
 admin_app.add_middleware(BaseHTTPMiddleware, dispatch=LoginPasswordMaxTryMiddleware(max_times=3, after_seconds=360))
@@ -49,22 +49,21 @@ admin_app.add_middleware(BaseHTTPMiddleware, dispatch=LoginPasswordMaxTryMiddlew
 
 ## 权限控制
 
-`PermissionProvider` allow you to configure the access control for resources of admin users with permissions `read`
-/`create`/`update`/`delete`.
+`PermissionProvider` 允许你通过管理员角色对每一项资源设置增删改查权限。
 
 ## 额外文件上传
 
 ### ALiYunOSS
 
-File upload for ALiYunOSS.
+支持阿里云OSS文件上传。
 
 ### AwsS3
 
-File upload for AWS S3.
+支持AWS S3文件上传。
 
 ## 系统维护
 
-If your site is in maintenance, you can set `true` to `admin_app.configure(...)`.
+如果你的站点维护，你可以设置展示处于维护状态中。
 
 ```python
 await admin_app.configure(maintenance=True)
@@ -72,7 +71,7 @@ await admin_app.configure(maintenance=True)
 
 ## 管理日志
 
-If you want to log all `create/update/delete` actions, you can add `AdminLogProvider` to `admin_app.configure(...)`.
+如果你需要记录所有的管理员操作日志，你可以增加配置`AdminLogProvider`。
 
 ```python
 await admin_app.configure(providers=[AdminLogProvider(Log)])
@@ -80,7 +79,7 @@ await admin_app.configure(providers=[AdminLogProvider(Log)])
 
 ## 站点搜索
 
-You can enable site search by add `SearchProvider` to `admin_app.configure(...)`.
+启用站点搜索。
 
 ```python
 await admin_app.configure(providers=[SearchProvider()])
@@ -88,7 +87,7 @@ await admin_app.configure(providers=[SearchProvider()])
 
 ## 通知
 
-You can use notification by adding `NotificationProvider` to `admin_app.configure(...) implement by websocket.
+启用websocket实时通知。
 
 ```python
 await admin_app.configure(providers=[NotificationProvider()])
@@ -96,7 +95,7 @@ await admin_app.configure(providers=[NotificationProvider()])
 
 ## OAuth2
 
-Current there are two builtin oauth2 implementations `GitHubOAuth2Provider` and `GoogleOAuth2Provider`.
+当前内置支持`GitHubOAuth2Provider` 和 `GoogleOAuth2Provider`两种方式。
 
 ```python
 await admin_app.configure(

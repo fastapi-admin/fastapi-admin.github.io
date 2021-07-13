@@ -46,7 +46,7 @@ async def startup():
 
 ## 定义并注册资源
 
-There are three kinds of resources, which are `Link`,`Model`, and `Dropdown`.
+有三种类型的资源，`Link`、`Model`和`Dropdown`。
 
 ### Link
 

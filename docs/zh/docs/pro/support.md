@@ -1,14 +1,11 @@
 # 支持
 
-Whenever you have any questions, you can open [issues](https://github.com/fastapi-admin/fastapi-admin-pro/issues/new)
-in `fastapi-admin-pro`
-repository for help, I will answer your questions as soon as possible.
+有任何问题你都可以到 [issues](https://github.com/fastapi-admin/fastapi-admin-pro/issues/new) `fastapi-admin-pro`仓库寻求帮助，我会尽快回答你的问题。
 
 ## 请求功能
 
-As sponsor, you can make feature request [here](https://github.com/fastapi-admin/fastapi-admin-pro/discussions/3), and I
-will consider to implement it.
+作为赞助者，你可以到[这里](https://github.com/fastapi-admin/fastapi-admin-pro/discussions/3) 请求新的特性，我会考虑是否实现。
 
 ## 付费请求
 
-If you want any features which pro version is not available, you can choose payment, and I can work that for you.
+如果你需要Pro版本暂未支持的特性并愿意为之付费，你可以考虑付费请求。

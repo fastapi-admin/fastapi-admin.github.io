@@ -1,4 +1,4 @@
-# Extra Actions
+# 额外动作
 
 There are three kinds of action, `toolbar action` show in right top of table header, `action` show in end of table
 row, `bulk action` show in left top of table header.

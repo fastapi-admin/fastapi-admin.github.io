@@ -1,15 +1,15 @@
 # 安装
 
-Because pro version won't publish to pypi, so you can't install from it.
+由于Pro版本不会发布到pypi，所以你不能直接进行安装。
 
 ## 依赖
 
-In order to access the repository programmatically (from the command line or GitHub Actions workflows), you need to create a personal access token:
+为了从程序中访问，例如从命令行或者GitHub Actions，你需要创建一个个人访问令牌。
 
-1. Go to <https://github.com/settings/tokens>.
-2. Click on Generate a new token.
-3. Enter a name and select the repo scope.
-4. Generate the token and store it in a safe place.
+1. 访问 <https://github.com/settings/tokens>。
+2. 点击 `Generate a new token`。
+3. 输入名称以及限定域。
+4. 生成令牌然后妥善保存。
 
 ## 使用 pip
 
@@ -22,7 +22,7 @@ In order to access the repository programmatically (from the command line or Git
 Add the following line in section `[tool.poetry.dependencies]`.
 
 ```toml
-fastapi-admin-pro = { git = 'https://${GH_TOKEN}@github.com/fastapi-admin/fastapi-admin-pro.git'}
+fastapi-admin-pro = { git = 'https://${GH_TOKEN}@github.com/fastapi-admin/fastapi-admin-pro.git' }
 ```
 
 ## 使用 requirements.txt
