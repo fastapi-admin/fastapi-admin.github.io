@@ -1,5 +1,5 @@
 site_name: FastAPI Admin
-site_url: https://github.com/fastapi-admin/fastapi-admin
+site_url: https://fastapi-admin.github.io
 repo_url: https://github.com/fastapi-admin/fastapi-admin
 site_description: A fast admin dashboard based on FastAPI and TortoiseORM with tabler ui, inspired by Django admin.
 repo_name: fastapi-admin/fastapi-admin
