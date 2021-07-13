@@ -1,11 +1,13 @@
 # 赞助
 
-Pro版本专为赞助者打造，作为赞助商，你会以外部合作者被邀请到[fastapi-admin](https://github.com/fastapi-admin)组织中，包含只读权限，然后你可以获得Pro版本独家功能以及对应时间段内的更新支持。
+Pro版本专为赞助者打造，拥有更丰富的功能。作为赞助者，你会以外部合作者被邀请到[fastapi-admin](https://github.com/fastapi-admin)
+组织中，包含只读权限，然后你可以获得Pro版本独家功能以及对应时间段内的更新支持。
 
 ## 如何赞助
 
-赞助地址： **<https://sponsor.long2ice.cn>**
-你可以选择你任何你喜欢的方式进行赞助，完成赞助后，你可以发送邮件到<long2ice@gmail.com>
+赞助地址：**<https://sponsor.long2ice.cn>**
+
+你可以选择你任何你喜欢的方式进行赞助，完成赞助后，你可以发送邮件到 <long2ice@gmail.com>
 ，包含你的赞助方式、赞助金额以及GitHub账号，然后我会邀请你到[fastapi-admin](https://github.com/fastapi-admin)组织中。
 
 ## 等级
