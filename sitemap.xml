@@ -1,132 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/</loc>
+         <loc>https://fastapi-admin.github.io/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/custom/action/</loc>
+         <loc>https://fastapi-admin.github.io/custom/action/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/custom/file_upload/</loc>
+         <loc>https://fastapi-admin.github.io/custom/file_upload/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/custom/overwrite/</loc>
+         <loc>https://fastapi-admin.github.io/custom/overwrite/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/custom/page/</loc>
+         <loc>https://fastapi-admin.github.io/custom/page/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/custom/widget/</loc>
+         <loc>https://fastapi-admin.github.io/custom/widget/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/getting_started/installation/</loc>
+         <loc>https://fastapi-admin.github.io/getting_started/installation/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/getting_started/quickstart/</loc>
+         <loc>https://fastapi-admin.github.io/getting_started/quickstart/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/pro/exclusive/</loc>
+         <loc>https://fastapi-admin.github.io/pro/exclusive/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/pro/installation/</loc>
+         <loc>https://fastapi-admin.github.io/pro/installation/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/pro/sponsor/</loc>
+         <loc>https://fastapi-admin.github.io/pro/sponsor/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/pro/support/</loc>
+         <loc>https://fastapi-admin.github.io/pro/support/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/pro/upgrade/</loc>
+         <loc>https://fastapi-admin.github.io/pro/upgrade/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/</loc>
+         <loc>https://fastapi-admin.github.io/reference/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/admin_log/</loc>
+         <loc>https://fastapi-admin.github.io/reference/admin_log/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/errors/</loc>
+         <loc>https://fastapi-admin.github.io/reference/errors/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/file_upload/</loc>
+         <loc>https://fastapi-admin.github.io/reference/file_upload/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/global_search/</loc>
+         <loc>https://fastapi-admin.github.io/reference/global_search/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/login/</loc>
+         <loc>https://fastapi-admin.github.io/reference/login/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/middleware/</loc>
+         <loc>https://fastapi-admin.github.io/reference/middleware/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/notification/</loc>
+         <loc>https://fastapi-admin.github.io/reference/notification/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/permission/</loc>
+         <loc>https://fastapi-admin.github.io/reference/permission/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/resource/</loc>
+         <loc>https://fastapi-admin.github.io/reference/resource/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/widget/display/</loc>
+         <loc>https://fastapi-admin.github.io/reference/widget/display/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/widget/filter/</loc>
+         <loc>https://fastapi-admin.github.io/reference/widget/filter/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://github.com/fastapi-admin/fastapi-admin/reference/widget/input/</loc>
+         <loc>https://fastapi-admin.github.io/reference/widget/input/</loc>
          <lastmod>2021-07-13</lastmod>
          <changefreq>daily</changefreq>
     </url>
