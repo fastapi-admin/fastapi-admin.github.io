@@ -5,8 +5,10 @@ row, `bulk action` show in left top of table header.
 
 ![](https://raw.githubusercontent.com/fastapi-admin/fastapi-admin/dev/images/actions.png)
 
-The format request link of `Action` is `/{resource}/action/{action_name}/{pk}`, `BulkAction`
-is `/{resource}/bulk_action/{action_name}`,`ToolbarAction` is `/{resource}/toolbar_action/{action_name}`.
+The format request link of `Action` is `/{resource}/{action_name}/{pk}`, `BulkAction`
+is `/{resource}/{action_name}` which request params is `pks` as a list of pk,`ToolbarAction`
+is `/{resource}/{action_name}`
+.
 
 ## Action
 
