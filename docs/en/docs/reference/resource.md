@@ -5,7 +5,7 @@ from `fastapi_admin.resources.Resource`.
 
 You should use `app.register` decorator to register a resource.
 
-And all icons define come from <https://tabler-icons.io> and <https://fontawesome.com>.
+All icons define come from <https://tabler-icons.io> and <https://fontawesome.com>.
 
 ## Link
 
@@ -55,11 +55,30 @@ as `displays.Boolean` for `BooleanField`, `inputs.Date` for `DateField`.
 
 All kind of widgets you can find in [Display](/reference/widget/display/) and [Input](/reference/widget/input/).
 
+## ComputeField
+
+Subclass of `Field` but for a virtual field, useful if you want to show some computed fields.
+
+```python
+class ComputeField(Field):
+    async def get_value(self, request: Request, obj: dict):
+        return obj.get(self.name)
+```
+
+What you need to do is just override the `get_value` method.
+
+```python
+class RestDays(ComputeField):
+    async def get_value(self, request: Request, obj: dict):
+        days = (obj.get(self.name) - date.today()).days
+        return days if days >= 0 else 0
+```
+
 ## Action
 
 The `Action` define the action display in every end of row, and bulk action for every model.
 
-By default there are two actions, Which are delete action and edit action, and one bulk action, which allow delete rows
+By default, there are two actions, Which are delete action and edit action, and one bulk action, which allow delete rows
 in bulk.
 
 To use that, you should override the `get_actions` and `get_bulk_actions`. The following example hide all default
@@ -73,28 +92,6 @@ class AdminResource(Model):
 
     async def get_bulk_actions(self, request: Request) -> List[Action]:
         return []
-```
-
-## ComputeField
-
-The class that `model.get_compute_fields` used.
-
-```python
-class ComputeField(BaseModel):
-    label: str
-    name: str
-
-    async def get_value(self, request: Request, obj: dict):
-        return obj.get(self.name)
-```
-
-What you need to do is just override the `get_value` method.
-
-```python
-class RestDays(ComputeField):
-    async def get_value(self, request: Request, obj: dict):
-        days = (obj.get(self.name) - date.today()).days
-        return days if days >= 0 else 0
 ```
 
 ## ToolbarAction
@@ -133,7 +130,9 @@ class AdminResource(Model):
 ### Configuration
 
 - `label`: The menu name display.
+- `fields`: The fields want to show and edit.
 - `model`: TortoiseORM model.
+- `page_size`: The default page size.
 - `page_pre_title`: Show page pre title in content.
 - `page_title`: Show page title in content.
 - `filters`: Define filters for the model, which will display filter inputs in table above, all kinds of filters you can
@@ -181,17 +180,6 @@ class AdminResource(Model):
         if field.name == "id":
             return {"class": "bg-danger text-white"}
         return await super().cell_attributes(request, obj, field)
-```
-
-### get_compute_fields
-
-In some cases we need show some extra fields which are computed from other fields, you can use `get_compute_fields`.
-
-```python
-@app.register
-class SponsorResource(Model):
-    async def get_compute_fields(self, request: Request) -> List[ComputeField]:
-        return [RestDays(name="invalid_date", label="Days Remaining")]
 ```
 
 ### get_toolbar_actions
