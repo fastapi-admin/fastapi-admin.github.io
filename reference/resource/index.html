@@ -504,15 +504,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#action" class="md-nav__link">
-    Action
+  <a href="#computefield" class="md-nav__link">
+    ComputeField
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#computefield" class="md-nav__link">
-    ComputeField
+  <a href="#action" class="md-nav__link">
+    Action
   </a>
   
 </li>
@@ -556,13 +556,6 @@
           <li class="md-nav__item">
   <a href="#cell_attributes" class="md-nav__link">
     cell_attributes
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get_compute_fields" class="md-nav__link">
-    get_compute_fields
   </a>
   
 </li>
@@ -979,15 +972,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#action" class="md-nav__link">
-    Action
+  <a href="#computefield" class="md-nav__link">
+    ComputeField
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#computefield" class="md-nav__link">
-    ComputeField
+  <a href="#action" class="md-nav__link">
+    Action
   </a>
   
 </li>
@@ -1036,13 +1029,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#get_compute_fields" class="md-nav__link">
-    get_compute_fields
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#get_toolbar_actions" class="md-nav__link">
     get_toolbar_actions
   </a>
@@ -1082,7 +1068,7 @@
 <p>There are three kinds of resources, <code>Link</code>,<code>Model</code> and <code>Dropdown</code>, all are inherited
 from <code>fastapi_admin.resources.Resource</code>.</p>
 <p>You should use <code>app.register</code> decorator to register a resource.</p>
-<p>And all icons define come from <a href="https://tabler-icons.io">https://tabler-icons.io</a> and <a href="https://fontawesome.com">https://fontawesome.com</a>.</p>
+<p>All icons define come from <a href="https://tabler-icons.io">https://tabler-icons.io</a> and <a href="https://fontawesome.com">https://fontawesome.com</a>.</p>
 <h2 id="link">Link</h2>
 <p><code>Link</code> just display a menu with a link.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">fastapi_admin.app</span> <span class="kn">import</span> <span class="n">app</span>
@@ -1121,9 +1107,21 @@ from <code>fastapi_admin.resources.Resource</code>.</p>
 <p>You can pass <code>str</code> or <code>Field</code> to <code>fields</code>, if is <code>str</code>, it will try to auto mapping display and input widget, such
 as <code>displays.Boolean</code> for <code>BooleanField</code>, <code>inputs.Date</code> for <code>DateField</code>.</p>
 <p>All kind of widgets you can find in <a href="/reference/widget/display/">Display</a> and <a href="/reference/widget/input/">Input</a>.</p>
+<h2 id="computefield">ComputeField</h2>
+<p>Subclass of <code>Field</code> but for a virtual field, useful if you want to show some computed fields.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ComputeField</span><span class="p">(</span><span class="n">Field</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</code></pre></div>
+<p>What you need to do is just override the <code>get_value</code> method.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">RestDays</span><span class="p">(</span><span class="n">ComputeField</span><span class="p">):</span>
+    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">days</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">-</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">.</span><span class="n">days</span>
+        <span class="k">return</span> <span class="n">days</span> <span class="k">if</span> <span class="n">days</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
+</code></pre></div>
 <h2 id="action">Action</h2>
 <p>The <code>Action</code> define the action display in every end of row, and bulk action for every model.</p>
-<p>By default there are two actions, Which are delete action and edit action, and one bulk action, which allow delete rows
+<p>By default, there are two actions, Which are delete action and edit action, and one bulk action, which allow delete rows
 in bulk.</p>
 <p>To use that, you should override the <code>get_actions</code> and <code>get_bulk_actions</code>. The following example hide all default
 actions with return empty list.</p>
@@ -1134,21 +1132,6 @@ actions with return empty list.</p>
 
     <span class="k">async</span> <span class="k">def</span> <span class="nf">get_bulk_actions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Action</span><span class="p">]:</span>
         <span class="k">return</span> <span class="p">[]</span>
-</code></pre></div>
-<h2 id="computefield">ComputeField</h2>
-<p>The class that <code>model.get_compute_fields</code> used.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">ComputeField</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
-    <span class="n">label</span><span class="p">:</span> <span class="nb">str</span>
-    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
-
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">return</span> <span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-</code></pre></div>
-<p>What you need to do is just override the <code>get_value</code> method.</p>
-<div class="highlight"><pre><span></span><code><span class="k">class</span> <span class="nc">RestDays</span><span class="p">(</span><span class="n">ComputeField</span><span class="p">):</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_value</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">obj</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">days</span> <span class="o">=</span> <span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)</span> <span class="o">-</span> <span class="n">date</span><span class="o">.</span><span class="n">today</span><span class="p">())</span><span class="o">.</span><span class="n">days</span>
-        <span class="k">return</span> <span class="n">days</span> <span class="k">if</span> <span class="n">days</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span>
 </code></pre></div>
 <h2 id="toolbaraction">ToolbarAction</h2>
 <p>The class that <code>mode.get_toolbar_actions</code> used.</p>
@@ -1177,7 +1160,9 @@ delete.</p>
 <h3 id="configuration">Configuration</h3>
 <ul>
 <li><code>label</code>: The menu name display.</li>
+<li><code>fields</code>: The fields want to show and edit.</li>
 <li><code>model</code>: TortoiseORM model.</li>
+<li><code>page_size</code>: The default page size.</li>
 <li><code>page_pre_title</code>: Show page pre title in content.</li>
 <li><code>page_title</code>: Show page title in content.</li>
 <li><code>filters</code>: Define filters for the model, which will display filter inputs in table above, all kinds of filters you can
@@ -1213,13 +1198,6 @@ field.</p>
             <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;class&quot;</span><span class="p">:</span> <span class="s2">&quot;bg-danger text-white&quot;</span><span class="p">}</span>
         <span class="k">return</span> <span class="k">await</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">cell_attributes</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">obj</span><span class="p">,</span> <span class="n">field</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="get_compute_fields">get_compute_fields</h3>
-<p>In some cases we need show some extra fields which are computed from other fields, you can use <code>get_compute_fields</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
-<span class="k">class</span> <span class="nc">SponsorResource</span><span class="p">(</span><span class="n">Model</span><span class="p">):</span>
-    <span class="k">async</span> <span class="k">def</span> <span class="nf">get_compute_fields</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">ComputeField</span><span class="p">]:</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">RestDays</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;invalid_date&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Days Remaining&quot;</span><span class="p">)]</span>
-</code></pre></div>
 <h3 id="get_toolbar_actions">get_toolbar_actions</h3>
 <p>Show toolbar actions top right of the table.</p>
 <div class="highlight"><pre><span></span><code><span class="nd">@app</span><span class="o">.</span><span class="n">register</span>
@@ -1246,7 +1224,7 @@ field.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 16, 2021 02:00:09</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 21, 2021 13:14:32</span>
       
     
   </small>
