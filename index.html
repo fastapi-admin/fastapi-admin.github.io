@@ -1030,10 +1030,7 @@ inspired by Django admin.</p>
 <li>Create <code>.env</code> file.</li>
 </ol>
 <div class="highlight"><pre><span></span><code>DATABASE_URL=mysql://root:123456@127.0.0.1:3306/fastapi-admin
-REDIS_HOST=localhost
-REDIS_PORT=6379
-REDIS_PASSWORD=
-REDIS_DB=0
+REDIS_URL=redis://localhost:6379/0
 </code></pre></div>
 <ol>
 <li>Run <code>docker-compose up -d --build</code>.</li>
@@ -1053,7 +1050,7 @@ License.</p>
 <div class="md-source-date">
   <small>
     
-      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">July 21, 2021 13:14:32</span>
+      Last update: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">August 23, 2021 14:27:17</span>
       
     
   </small>
