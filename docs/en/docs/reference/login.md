@@ -52,7 +52,7 @@ async def startup():
                 Admin,
                 settings.GOOGLE_CLIENT_ID,
                 settings.GOOGLE_CLIENT_SECRET,
-                redirect_uri="https://fastapi-admin-pro.long2ice.cn/admin/oauth2/google_oauth2_provider",
+                redirect_uri="https://fastapi-admin-pro.long2ice.io/admin/oauth2/google_oauth2_provider",
             ),
         ]
     )
