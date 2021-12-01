@@ -6,7 +6,7 @@ and you can get the pro features and get updates for a time.
 
 ## How to become a sponsor
 
-Sponsor **$18** then You will be invited and keep collaborator role.
+Sponsor at least **$18** then You will be invited and keep collaborator role.
 
 Sponsor Link: **<https://sponsor.long2ice.io>**
 
