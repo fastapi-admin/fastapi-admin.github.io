@@ -14,6 +14,9 @@ You can choose any sponsor way you like. After sponsor, you can email me <long2i
 and sponsor way and account, then I will invite you to join [fastapi-admin](https://github.com/fastapi-admin)
 organization.
 
+**Note**: If you sponsor before but removed due to the invalid date reach, you can email me, and I will invite you
+again!
+
 ## Licence
 
 After you have be invited, you can read and clone and develop yourself, but please **don't distribute the source code**
