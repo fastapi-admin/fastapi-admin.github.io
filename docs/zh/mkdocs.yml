@@ -10,6 +10,7 @@ theme:
   favicon: https://raw.githubusercontent.com/fastapi-admin/fastapi-admin/dev/images/favicon.png
   name: material
   language: zh
+  custom_dir: ../overrides
   icon:
     repo: fontawesome/brands/github
   palette:
@@ -76,8 +77,10 @@ extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/long2ice
-
-copyright: Copyright &copy; 2021 long2ice
+  analytics:
+    provider: google
+    property: G-61L9SRWCG5
+copyright: Copyright &copy; 2021 - 2022 long2ice
 
 plugins:
   - git-revision-date-localized:

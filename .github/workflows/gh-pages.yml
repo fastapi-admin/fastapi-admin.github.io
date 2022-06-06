@@ -21,6 +21,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/en/site
+          cname: fastapi-admin-docs.long2ice.io
       - name: Build zh
         run: cd docs/zh && mkdocs build
       - name: Deploy zh
@@ -29,3 +30,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: docs/zh/site
           destination_dir: zh
+          cname: fastapi-admin-docs.long2ice.io
