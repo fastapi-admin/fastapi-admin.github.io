@@ -1,0 +1,44 @@
+name: deploy
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install and configure Poetry
+        run: |
+          pip install -U pip poetry
+          poetry config virtualenvs.create false
+      - name: Install deps
+        run: poetry install
+      - name: Build en
+        run: cd docs/en && mkdocs build
+      - name: Build zh
+        run: cd docs/zh && mkdocs build
+      - name: Deploy en
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          source: "docs/en/site/*"
+          target: "/var/www/fastapi-admin-docs"
+          strip_components: 3
+      - name: Deploy zh
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          source: "docs/zh/site/*"
+          target: "/var/www/fastapi-admin-docs/zh"
+          strip_components: 3
