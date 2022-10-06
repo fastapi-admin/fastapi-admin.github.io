@@ -24,21 +24,21 @@ jobs:
         run: cd docs/en && mkdocs build
       - name: Build zh
         run: cd docs/zh && mkdocs build
-      - name: Deploy en
-        uses: appleboy/scp-action@master
+      - name: Minio Deploy en
+        uses: mamal72/minio-perfect-deploy-action@main
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          source: "docs/en/site/*"
-          target: "/var/www/fastapi-admin-docs"
-          strip_components: 3
-      - name: Deploy zh
-        uses: appleboy/scp-action@master
+          endpoint: ${{ secrets.MINIO_ENDPOINT }}
+          access_key: ${{ secrets.MINIO_ACCESS_KEY }}
+          secret_key: ${{ secrets.MINIO_SECRET_KEY }}
+          bucket: "website"
+          source_dir: "docs/en/site"
+          target_dir: "/fastapi-admin-docs"
+      - name: Minio Deploy zh
+        uses: mamal72/minio-perfect-deploy-action@main
         with:
-          host: ${{ secrets.HOST }}
-          username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.KEY }}
-          source: "docs/zh/site/*"
-          target: "/var/www/fastapi-admin-docs/zh"
-          strip_components: 3
+          endpoint: ${{ secrets.MINIO_ENDPOINT }}
+          access_key: ${{ secrets.MINIO_ACCESS_KEY }}
+          secret_key: ${{ secrets.MINIO_SECRET_KEY }}
+          bucket: "website"
+          source_dir: "docs/zh/site"
+          target_dir: "/fastapi-admin-docs/zh"
