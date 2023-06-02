@@ -9,6 +9,9 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -24,21 +27,16 @@ jobs:
         run: cd docs/en && mkdocs build
       - name: Build zh
         run: cd docs/zh && mkdocs build
-      - name: Minio Deploy en
-        uses: mamal72/minio-perfect-deploy-action@main
+      - name: Deploy en
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          endpoint: ${{ secrets.MINIO_ENDPOINT }}
-          access_key: ${{ secrets.MINIO_ACCESS_KEY }}
-          secret_key: ${{ secrets.MINIO_SECRET_KEY }}
-          bucket: "website"
-          source_dir: "docs/en/site"
-          target_dir: "/fastapi-admin-docs"
-      - name: Minio Deploy zh
-        uses: mamal72/minio-perfect-deploy-action@main
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/en/site
+          cname: fastapi-admin-docs.long2ice.io
+      - name: Deploy en
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          endpoint: ${{ secrets.MINIO_ENDPOINT }}
-          access_key: ${{ secrets.MINIO_ACCESS_KEY }}
-          secret_key: ${{ secrets.MINIO_SECRET_KEY }}
-          bucket: "website"
-          source_dir: "docs/zh/site"
-          target_dir: "/fastapi-admin-docs/zh"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/zh/site
+          destination_dir: zh
+
