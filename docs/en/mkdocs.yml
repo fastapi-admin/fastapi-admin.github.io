@@ -10,7 +10,6 @@ theme:
   favicon: https://raw.githubusercontent.com/fastapi-admin/fastapi-admin/dev/images/favicon.png
   name: material
   language: en
-  custom_dir: ../overrides
   icon:
     repo: fontawesome/brands/github
   palette:
