@@ -1,6 +1,6 @@
 # Login
 
-## Uername and password
+## Username and password
 
 There is a builtin `UsernamePasswordProvider`, if you want to enable it, you need add in to providers.
 
@@ -29,7 +29,7 @@ Then admin can login with `username` and `password`.
 
 ## OAuth2  (💗 Pro only)
 
-If want admin login with [oauth2](https://datatracker.ietf.org/doc/html/rfc6749) method, such as `GitHub` or `Google`,
+If you want admin login with [oauth2](https://datatracker.ietf.org/doc/html/rfc6749) method, such as `GitHub` or `Google`,
 you can use `OAuth2Provider`.
 
 Current there are two builtin providers, `GitHubOAuth2Provider` and `GoogleOAuth2Provider`.
